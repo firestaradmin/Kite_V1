@@ -10,7 +10,8 @@
                 "${workspaceFolder}/components/key/",
                 "${workspaceFolder}/components/led/",
                 "${workspaceFolder}/components/lcd/",
-                "${workspaceFolder}/components/lvgl/**"
+                "${workspaceFolder}/components/lvgl/**",
+                "${workspaceFolder}/components/utility/"
             ],
             "defines": [
                 "_DEBUG",

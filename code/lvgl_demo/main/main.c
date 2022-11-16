@@ -12,7 +12,7 @@
 #include "key.h"
 #include "led.h"
 #include "lcd_st7735s.h"
-
+#include "ug_log.h"
 /* LVGL */
 #include "lvgl.h"
 #include "lv_port_disp.h"
@@ -44,8 +44,8 @@ void app_main(void)
 {
 	printf("Kite_V1 core board demo!\n");
 
-    // ug_log_mutex_init();
-    // ug_log_init(ug_log_mutexWay_externel, printf, ugLogLock, ugLogUnlock);
+    ug_log_mutex_init();
+    ug_log_init(ug_log_mutexWay_externel, printf, ugLogLock, ugLogUnlock);
     led_init();
 	key_init();
     lv_init();
@@ -54,7 +54,7 @@ void app_main(void)
     create_ui();
 
     vOtherFunction();
-
+    UGINFO("every thing willl be ok!\r\n");
     while(1)
 	{
         lv_timer_handler();
