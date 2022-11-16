@@ -1,0 +1,27 @@
+{
+    "configurations": [
+        {
+            "name": "Win32",
+            "includePath": [
+                "${workspaceFolder}",
+                "${workspaceFolder}/build/config/",
+                "D:\\esp\\frameworks\\esp-idf-v4.4.2\\components\\**",
+                "D:\\esp\\tools\\xtensa-esp32-elf\\esp-2021r2-patch3-8.4.0\\xtensa-esp32-elf\\lib\\gcc\\xtensa-esp32-elf\\8.4.0\\include/",
+                "${workspaceFolder}/components/key/",
+                "${workspaceFolder}/components/led/",
+                "${workspaceFolder}/components/lcd/",
+                "${workspaceFolder}/components/lvgl/**"
+            ],
+            "defines": [
+                "_DEBUG",
+                "UNICODE",
+                "_UNICODE"
+            ],
+            "compilerPath": "D:\\esp\\tools\\xtensa-esp32-elf\\esp-2021r2-patch3-8.4.0\\xtensa-esp32-elf\\bin\\xtensa-esp32-elf-gcc.exe",
+            "cStandard": "c11",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "gcc-arm"
+        }
+    ],
+    "version": 4
+}

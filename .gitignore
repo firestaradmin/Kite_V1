@@ -1,0 +1,17 @@
+build
+
+
+/project/
+/projects/
+__Previews
+/share/
+History/
+
+
+
+# History
+Components Lib/PCBLib/History/
+Components Lib/SCHLib/History/
+PCB logo/History/
+Templates/History/
+Templates/__Previews/
