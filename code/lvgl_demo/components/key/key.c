@@ -24,24 +24,24 @@
 #define GPIO_KEY_R   19
 #define GPIO_KEY_R_PIN_SEL  (1ULL << GPIO_KEY_R)
 
-key_struct_t key_L = {
+key_struct_t key_L ={
     .gpio_num = GPIO_KEY_L,
     .state = KEY_RELEASED,
-    .event = 0,
+    .event = {{0}},
     .lastPressedTime = 0
 };
 
-key_struct_t key_R = {
+key_struct_t key_R ={
     .gpio_num = GPIO_KEY_R,
     .state = KEY_RELEASED,
-    .event = 0,
+    .event = {{0}},
     .lastPressedTime = 0
 };
 
-key_struct_t key_Mid = {
+key_struct_t key_Mid ={
     .gpio_num = GPIO_KEY_MID,
     .state = KEY_RELEASED,
-    .event = 0,
+    .event = {{0}},
     .lastPressedTime = 0
 };
 
