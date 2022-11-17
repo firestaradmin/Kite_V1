@@ -17,8 +17,33 @@
  */
 
 
+#define GPIO_KEY_L   17
+#define GPIO_KEY_L_PIN_SEL  (1ULL << GPIO_KEY_L) 
+#define GPIO_KEY_MID   18
+#define GPIO_KEY_MID_PIN_SEL  (1ULL << GPIO_KEY_MID) 
+#define GPIO_KEY_R   19
+#define GPIO_KEY_R_PIN_SEL  (1ULL << GPIO_KEY_R)
 
+key_struct_t key_L = {
+    .gpio_num = GPIO_KEY_L,
+    .state = KEY_RELEASED,
+    .event = 0,
+    .lastPressedTime = 0
+};
 
+key_struct_t key_R = {
+    .gpio_num = GPIO_KEY_R,
+    .state = KEY_RELEASED,
+    .event = 0,
+    .lastPressedTime = 0
+};
+
+key_struct_t key_Mid = {
+    .gpio_num = GPIO_KEY_MID,
+    .state = KEY_RELEASED,
+    .event = 0,
+    .lastPressedTime = 0
+};
 
 static xQueueHandle gpio_evt_queue = NULL;
 
@@ -42,10 +67,12 @@ void key_init(void)
 {
     gpio_config_t io_conf;
 
+
+    /* init key L */
     //interrupt of rising edge
     io_conf.intr_type = GPIO_PIN_INTR_POSEDGE;
     //bit mask of the pins, use GPIO17 here
-    io_conf.pin_bit_mask = GPIO_KEY_PIN_SEL;
+    io_conf.pin_bit_mask = GPIO_KEY_L_PIN_SEL;
     //set as input mode    
     io_conf.mode = GPIO_MODE_INPUT;
     //disable pull-down mode
@@ -53,6 +80,24 @@ void key_init(void)
     //enable pull-up mode
     io_conf.pull_up_en = 1;
     gpio_config(&io_conf);
+
+    /* init key R */
+    io_conf.intr_type = GPIO_PIN_INTR_POSEDGE;
+    io_conf.pin_bit_mask = GPIO_KEY_R_PIN_SEL;
+    io_conf.mode = GPIO_MODE_INPUT;
+    io_conf.pull_down_en = 0;
+    io_conf.pull_up_en = 1;
+    gpio_config(&io_conf);
+
+    /* init key Mid */
+    io_conf.intr_type = GPIO_PIN_INTR_POSEDGE;
+    io_conf.pin_bit_mask = GPIO_KEY_MID_PIN_SEL;
+    io_conf.mode = GPIO_MODE_INPUT;
+    io_conf.pull_down_en = 0;
+    io_conf.pull_up_en = 1;
+    gpio_config(&io_conf);
+
+
 
 
     //create a queue to handle gpio event from isr
@@ -63,7 +108,9 @@ void key_init(void)
     //install gpio isr service
     gpio_install_isr_service(0);
     //hook isr handler for specific gpio pin
-    gpio_isr_handler_add(GPIO_KEY0, key_isr_handler, (void*) GPIO_KEY0);
+    gpio_isr_handler_add(GPIO_KEY_L, key_isr_handler, (void*) GPIO_KEY_L);
+    gpio_isr_handler_add(GPIO_KEY_R, key_isr_handler, (void*) GPIO_KEY_R);
+    gpio_isr_handler_add(GPIO_KEY_MID, key_isr_handler, (void*) GPIO_KEY_MID);
 
 }
 
