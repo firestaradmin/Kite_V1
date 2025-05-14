@@ -24,6 +24,7 @@
 #include "mylcd.h"
 
 #include "mybeep.h"
+#include "led.h"
 // #include "my_rgbled.h"
 // #include "my_ble.h"
 #include "mlog.h"
@@ -73,11 +74,13 @@ void screenInit()
 
 }
 
+
 extern void bleServerInit(void);
 
 void app_main(void)
 {
     MLOGI("Start\n");
+    led_init();
     screenInit();
     bleServerInit();
     lcd_draw_fillRectangle(&lcd_096, 0, 0, 80, 160, UG_COLOR_GREEN);
@@ -88,7 +91,8 @@ void app_main(void)
 
     while (1)
     {
-        vTaskDelay(100 / portTICK_PERIOD_MS);
+        vTaskDelay(1000 / portTICK_PERIOD_MS);
+        MLOGI("LOOP!\n");
     }
 }
 
