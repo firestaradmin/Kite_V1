@@ -28,7 +28,7 @@ typedef struct key_struct{
     key_event_t event;
 } key_struct_t;
 
-void key_init(void);
+void buttonInit(void);
 
 
 

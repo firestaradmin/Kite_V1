@@ -1,11 +1,17 @@
 
 
-file(GLOB_RECURSE SOURCES 
+file(GLOB SOURCES 
     ./main.c
-    ./ble_server.c
+    ./user/ble_server.c
+    ./drv/led/*.c
+    ./drv/button/*.c
 )
 
-set(include_dirs  . )
+set(include_dirs  
+    .
+    ./drv/led 
+    ./drv/button
+)
 
 
 idf_component_register(SRCS ${SOURCES}

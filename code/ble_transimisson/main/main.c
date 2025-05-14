@@ -18,15 +18,8 @@
 #include "freertos/task.h"
 #include "freertos/event_groups.h"
 
-// #include "uv_log.h"
-// user
-// #include "gui.h"
 #include "mylcd.h"
-
-#include "mybeep.h"
 #include "led.h"
-// #include "my_rgbled.h"
-// #include "my_ble.h"
 #include "mlog.h"
 
 static const char* TAG = "Main";
@@ -80,7 +73,8 @@ extern void bleServerInit(void);
 void app_main(void)
 {
     MLOGI("Start\n");
-    led_init();
+    ledInit();
+    buttonInit();
     screenInit();
     bleServerInit();
     lcd_draw_fillRectangle(&lcd_096, 0, 0, 80, 160, UG_COLOR_GREEN);
@@ -89,10 +83,12 @@ void app_main(void)
     lcd_xfer_ram_swap_16bit(&lcd_096);
     MLOGI("init ok!\n");
 
+    MLOGI("Minimum free heap size: %"PRIu32" bytes\n", esp_get_minimum_free_heap_size());
+        
     while (1)
     {
         vTaskDelay(1000 / portTICK_PERIOD_MS);
-        MLOGI("LOOP!\n");
+        // MLOGI("LOOP!\n");
     }
 }
 

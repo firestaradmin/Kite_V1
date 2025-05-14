@@ -23,7 +23,7 @@ static void led_task(void* arg)
 
 
 
-void led_init(void)
+void ledInit(void)
 {
 	gpio_config_t io_conf;
     //disable interrupt
