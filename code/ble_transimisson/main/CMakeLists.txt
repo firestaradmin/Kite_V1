@@ -1,15 +1,14 @@
 
 
-
-
-set(MAIN_SRCS     
+file(GLOB_RECURSE SOURCES 
     ./main.c
-    )
+    ./ble_server.c
+)
+
+set(include_dirs  . )
 
 
-message("========== TEST TEST !!! BUILD ESP32 for KiteV1")
-idf_component_register(SRCS 
-                            "main.c"
-                    INCLUDE_DIRS "."
-                                )
+idf_component_register(SRCS ${SOURCES}
+                    INCLUDE_DIRS ${include_dirs})
+
 target_compile_options(${COMPONENT_LIB} PRIVATE -w -Wno-unused-const-variable)

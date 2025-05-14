@@ -158,8 +158,31 @@ void lcd_ram_fill(LcdDevice *dev, uint16_t xsta,uint16_t ysta,uint16_t w,uint16_
 		{
 			pvram[i+xsta*(dev->res_w+(j+ysta))] = color;
 		}
-	} 					  	    
+	} 		
+    
+    
 }
+
+// /**  with BUGS
+//  * @brief fill internal lcd ram only, will not refresh to lcd, 
+//  *              need call func lcd_xfer_ram() to refresh.           
+// */
+// void lcd_ram_fill_fullscreen(LcdDevice *dev, uint16_t color)
+// {          
+//     if (dev->vram == NULL){
+//         return;
+//     }
+//     uint16_t *pvram = (uint16_t *)dev->vram;
+//     uint16_t i,j; 
+// 	for(i=0;i<dev->res_h;i++)
+// 	{													   	 	
+// 		for(j=0;j<j<dev->res_w;j++)
+// 		{
+// 			pvram[i+j*dev->res_w] = color;
+// 		}
+// 	} 		
+
+// }
 
 
 

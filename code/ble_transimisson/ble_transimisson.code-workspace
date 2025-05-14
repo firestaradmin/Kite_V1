@@ -73,7 +73,14 @@
             "task.h": "c",
             "lv_port_disp.h": "c",
             "esp_gatts_api.h": "c",
-            "esp_gap_ble_api.h": "c"
+            "esp_gap_ble_api.h": "c",
+            "esp_sleep.h": "c",
+            "format": "cpp",
+            "chrono": "cpp",
+            "regex": "cpp",
+            "compare": "c",
+            "cstdint": "c",
+            "stdint.h": "c"
         }
 	}
 }
