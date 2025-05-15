@@ -6,5 +6,5 @@ cmake_minimum_required(VERSION 3.5)
 # add_compile_options(-Wno-format)
 # add_compile_options(-Wno-return-type)
 include($ENV{IDF_PATH}/tools/cmake/project.cmake)
-project(kite_v1_demo)
+project(ble_transimisson)
 
